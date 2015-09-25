@@ -43,17 +43,40 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 	private JButton n;
 	private JButton m;
 	private JButton backspace;
-	private JButton apostrophe;
+	private JButton at;
 	private JButton enter;
 	private JButton comma;
 	private JButton period;
 	private JButton question;
+	
+	private JButton zero;
+	private JButton one;
+	private JButton two;
+	private JButton three;
+	private JButton four;
+	private JButton five;
+	private JButton six;
+	private JButton seven;
+	private JButton eight;
+	private JButton nine;
+	
 
 	private JTextField field;
 
 	private String input = "";
 
 	public TouchKeyboard() {
+		zero = new JButton("0");
+		one = new JButton("1");
+		two = new JButton("2");
+		three = new JButton("3");
+		four = new JButton("4");
+		five = new JButton("5");
+		six = new JButton("6");
+		seven = new JButton("7");
+		eight = new JButton("8");
+		nine = new JButton("9");
+		
 		q = new JButton("Q");
 		w = new JButton("W");
 		e = new JButton("E");
@@ -75,8 +98,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		j = new JButton("J");
 		k = new JButton("K");
 		l = new JButton("L");
-		apostrophe = new JButton("\u0027");
-		enter = new JButton("Enter");
+		at = new JButton("\u0040");
+		enter = new JButton("Done");
 
 		z = new JButton("Z");
 		x = new JButton("X");
@@ -91,8 +114,36 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gridC = new GridBagConstraints();
-		gridC.fill = GridBagConstraints.HORIZONTAL;
+		gridC.fill = GridBagConstraints.BOTH;
 		gridC.weightx = 0.5;
+		
+		gridC.gridy = 0;
+		gridC.gridx = 13;
+		this.add(one, gridC);
+		gridC.gridx = 14;
+		this.add(two, gridC);
+		gridC.gridx = 15;
+		this.add(three, gridC);
+		
+		gridC.gridy = 1;
+		gridC.gridx = 13;
+		this.add(four, gridC);
+		gridC.gridx = 14;
+		this.add(five, gridC);
+		gridC.gridx = 15;
+		this.add(six, gridC);
+		
+		gridC.gridy = 2;
+		gridC.gridx = 13;
+		this.add(seven, gridC);
+		gridC.gridx = 14;
+		this.add(eight, gridC);
+		gridC.gridx = 15;
+		this.add(nine, gridC);
+		
+		gridC.gridy = 3;
+		gridC.gridx = 14;
+		this.add(zero, gridC);
 
 		gridC.gridy = 0;
 		gridC.gridx = 0;
@@ -115,6 +166,7 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		this.add(o, gridC);
 		gridC.gridx = 9;
 		this.add(p, gridC);
+		
 		gridC.gridx = 10;
 		gridC.gridwidth = 3;
 		this.add(backspace, gridC);
@@ -140,10 +192,7 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		gridC.gridx = 8;
 		this.add(l, gridC);
 		gridC.gridx = 9;
-		this.add(apostrophe, gridC);
-		gridC.gridx = 10;
-		gridC.gridwidth = 3;
-		this.add(enter, gridC);
+		this.add(at, gridC);
 
 		gridC.gridwidth = 1;
 		gridC.gridy = 2;
@@ -167,11 +216,16 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		this.add(period, gridC);
 		gridC.gridx = 9;
 		this.add(question, gridC);
-
+		
+		gridC.gridx = 3;
 		gridC.gridy = 4;
-		gridC.gridx = 1;
-		gridC.gridwidth = 11;
-		gridC.gridheight = 3;
+		gridC.gridwidth = 4;
+		this.add(enter, gridC);
+		
+		gridC.gridwidth = 16;
+		gridC.gridheight = 5;
+		
+		zero.addActionListener(this);
 
 		q.addActionListener(this);
 		w.addActionListener(this);
@@ -194,7 +248,7 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		j.addActionListener(this);
 		k.addActionListener(this);
 		l.addActionListener(this);
-		apostrophe.addActionListener(this);
+		at.addActionListener(this);
 		enter.addActionListener(this);
 
 		z.addActionListener(this);
@@ -268,8 +322,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 			if (input.length() > 0) {
 				input = input.substring(0, input.length() - 1);
 			}
-		} else if (ae.getSource() == apostrophe) {
-			input += ("\u0027");
+		} else if (ae.getSource() == at) {
+			input += ("\u0040");
 		} else if (ae.getSource() == enter) {
 			// input += System.getProperty("line.separator");
 		} else if (ae.getSource() == comma) {
@@ -278,7 +332,9 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 			input += (".");
 		} else if (ae.getSource() == question) {
 			input += ("?");
-		}
+		} else if (ae.getSource() == zero) {
+			input += ("0");
+		}		
 
 		field.setText(input);
 		System.out.println(input);

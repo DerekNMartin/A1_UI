@@ -25,7 +25,7 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 
 	private JLabel studentNumberLabel = new JLabel("Student Number:");
 	private JLabel pinLabel = new JLabel("PIN:");
-	private JLabel emailLabel = new JLabel("Email Address:");
+	private JLabel emailLabel = new JLabel("* Email Address:");
 	private JLabel vehicleInsuranceLabel = new JLabel(
 			"Vehicle & Insurance Information:");
 	private JLabel expiryLabel = new JLabel("Expiry Date:");
@@ -47,7 +47,7 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		gc.fill = GridBagConstraints.HORIZONTAL;
+		gc.fill = GridBagConstraints.BOTH;
 		gc.insets = new Insets(10, 10, 10, 10);
 
 		gc.gridx = 0;
