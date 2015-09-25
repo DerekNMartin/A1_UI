@@ -181,8 +181,6 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		this.add(period, gridC);
 		gridC.gridx = 9;
 		this.add(question, gridC);
-		gridC.gridx = 10;
-		this.add(shift, gridC);
 		
 		gridC.gridx = 3;
 		gridC.gridy = 4;
@@ -191,6 +189,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		
 		gridC.gridwidth = 16;
 		gridC.gridheight = 5;
+		
+		zero.addActionListener(this);
 
 		q.addActionListener(this);
 		w.addActionListener(this);
@@ -203,7 +203,6 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		o.addActionListener(this);
 		p.addActionListener(this);
 		backspace.addActionListener(this);
-		shift.addActionListener(this);
 
 		a.addActionListener(this);
 		s.addActionListener(this);
@@ -298,6 +297,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 			input += (".");
 		} else if (ae.getSource() == question) {
 			input += ("?");
+		} else if (ae.getSource() == zero) {
+			input += ("0");
 		}		
 
 		field.setText(input);

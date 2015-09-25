@@ -298,6 +298,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 			input += (".");
 		} else if (ae.getSource() == question) {
 			input += ("?");
+		} else if (ae.getSource() == zero) {
+			input += ("0");
 		}		
 
 		field.setText(input);

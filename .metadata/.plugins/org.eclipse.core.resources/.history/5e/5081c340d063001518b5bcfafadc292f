@@ -48,7 +48,6 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 	private JButton comma;
 	private JButton period;
 	private JButton question;
-	private JButton shift;
 	
 	private JButton zero;
 	private JButton one;
@@ -67,6 +66,16 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 	private String input = "";
 
 	public TouchKeyboard() {
+		zero = new JButton("0");
+		one = new JButton("1");
+		two = new JButton("2");
+		three = new JButton("3");
+		four = new JButton("4");
+		five = new JButton("5");
+		six = new JButton("6");
+		seven = new JButton("7");
+		eight = new JButton("8");
+		nine = new JButton("9");
 		
 		q = new JButton("Q");
 		w = new JButton("W");
@@ -79,7 +88,6 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		o = new JButton("O");
 		p = new JButton("P");
 		backspace = new JButton("Backspace");
-		shift = new JButton("Shift");
 
 		a = new JButton("A");
 		s = new JButton("S");
@@ -109,6 +117,33 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		gridC.fill = GridBagConstraints.BOTH;
 		gridC.weightx = 0.5;
 		
+		gridC.gridy = 0;
+		gridC.gridx = 13;
+		this.add(one, gridC);
+		gridC.gridx = 14;
+		this.add(two, gridC);
+		gridC.gridx = 15;
+		this.add(three, gridC);
+		
+		gridC.gridy = 1;
+		gridC.gridx = 13;
+		this.add(four, gridC);
+		gridC.gridx = 14;
+		this.add(five, gridC);
+		gridC.gridx = 15;
+		this.add(six, gridC);
+		
+		gridC.gridy = 2;
+		gridC.gridx = 13;
+		this.add(seven, gridC);
+		gridC.gridx = 14;
+		this.add(eight, gridC);
+		gridC.gridx = 15;
+		this.add(nine, gridC);
+		
+		gridC.gridy = 3;
+		gridC.gridx = 14;
+		this.add(zero, gridC);
 
 		gridC.gridy = 0;
 		gridC.gridx = 0;
@@ -181,8 +216,6 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		this.add(period, gridC);
 		gridC.gridx = 9;
 		this.add(question, gridC);
-		gridC.gridx = 10;
-		this.add(shift, gridC);
 		
 		gridC.gridx = 3;
 		gridC.gridy = 4;
@@ -191,6 +224,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		
 		gridC.gridwidth = 16;
 		gridC.gridheight = 5;
+		
+		zero.addActionListener(this);
 
 		q.addActionListener(this);
 		w.addActionListener(this);
@@ -203,7 +238,6 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		o.addActionListener(this);
 		p.addActionListener(this);
 		backspace.addActionListener(this);
-		shift.addActionListener(this);
 
 		a.addActionListener(this);
 		s.addActionListener(this);
@@ -298,6 +332,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 			input += (".");
 		} else if (ae.getSource() == question) {
 			input += ("?");
+		} else if (ae.getSource() == zero) {
+			input += ("0");
 		}		
 
 		field.setText(input);

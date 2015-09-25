@@ -191,6 +191,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 		
 		gridC.gridwidth = 16;
 		gridC.gridheight = 5;
+		
+		zero.addActionListener(this);
 
 		q.addActionListener(this);
 		w.addActionListener(this);
@@ -298,6 +300,8 @@ public class TouchKeyboard extends JPanel implements ActionListener {
 			input += (".");
 		} else if (ae.getSource() == question) {
 			input += ("?");
+		} else if (ae.getSource() == zero) {
+			input += ("0");
 		}		
 
 		field.setText(input);
