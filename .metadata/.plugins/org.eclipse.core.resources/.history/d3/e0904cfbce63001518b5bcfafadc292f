@@ -48,6 +48,27 @@ public class TouchNumPad extends JPanel implements ActionListener {
 		eight = new JButton("8");
 		nine = new JButton("9");
 		
+		exclam = new JButton("\u0021");
+		hash = new JButton("\u0023");
+		dollar = new JButton("\u0024");
+		percent = new JButton("\u0025");
+		and = new JButton("\u0026");
+		apost = new JButton("\u0027");
+		asterisk = new JButton("\u002A");
+		plus = new JButton("\u002B");
+		dash = new JButton("\u002D");
+		dot = new JButton("\u002E");
+		caret = new JButton("\u005E");
+		equal = new JButton("\u003D");
+		question = new JButton("\u003F");
+		underscore = new JButton("\u005F");
+		quote = new JButton("\u00B4");
+		braceL = new JButton("\u007B");
+		braceR = new JButton("\u007D");
+		or = new JButton("\u007C");
+		tilde = new JButton("\u007E");
+		slash = new JButton("\u002F");
+		
 		backspace = new JButton("Backspace");
 
 
@@ -59,38 +80,95 @@ public class TouchNumPad extends JPanel implements ActionListener {
 		gridC.gridwidth = 1;
 		gridC.gridy = 0;
 		gridC.gridx = 0;
-		this.add(one, gridC);
+		this.add(hash, gridC);
 		gridC.gridx = 1;
-		this.add(two, gridC);
+		this.add(dollar, gridC);
 		gridC.gridx = 2;
+		this.add(and, gridC);
+		gridC.gridx = 3;
+		this.add(underscore, gridC);
+		gridC.gridx = 4;
+		this.add(dash, gridC);
+		gridC.gridx = 5;
+		this.add(one, gridC);
+		gridC.gridx = 6;
+		this.add(two, gridC);
+		gridC.gridx = 7;
 		this.add(three, gridC);
+		gridC.gridx = 8;
+		this.add(backspace, gridC);
 		
+		gridC.gridwidth = 1;
 		gridC.gridy = 1;
 		gridC.gridx = 0;
-		this.add(four, gridC);
+		this.add(caret, gridC);
 		gridC.gridx = 1;
-		this.add(five, gridC);
+		this.add(braceL, gridC);
 		gridC.gridx = 2;
+		this.add(braceR, gridC);
+		gridC.gridx = 3;
+		this.add(equal, gridC);
+		gridC.gridx = 4;
+		this.add(plus, gridC);
+		gridC.gridx = 5;
+		this.add(four, gridC);
+		gridC.gridx = 6;
+		this.add(five, gridC);
+		gridC.gridx = 7;
 		this.add(six, gridC);
-		
+
+		gridC.gridwidth = 1;
 		gridC.gridy = 2;
 		gridC.gridx = 0;
-		this.add(seven, gridC);
+		this.add(tilde, gridC);
 		gridC.gridx = 1;
-		this.add(eight, gridC);
+		this.add(apost, gridC);
 		gridC.gridx = 2;
+		this.add(or, gridC);
+		gridC.gridx = 3;
+		this.add(slash, gridC);
+		gridC.gridx = 4;
+		this.add(percent, gridC);
+		gridC.gridx = 5;
+		this.add(seven, gridC);
+		gridC.gridx = 6;
+		this.add(eight, gridC);
+		gridC.gridx = 7;
 		this.add(nine, gridC);
 		
+		gridC.gridwidth = 1;
 		gridC.gridy = 3;
-		gridC.gridx = 0;
+		gridC.gridx = 5;
+		this.add(exclam, gridC);
+		gridC.gridx = 6;
 		this.add(zero, gridC);
-		gridC.gridwidth = 2;
-		gridC.gridx = 1;
-		this.add(backspace, gridC);
-
+		gridC.gridx = 7;
+		this.add(question, gridC);
 		
 		gridC.gridwidth = 15;
 		gridC.gridheight = 4;
+		
+		
+		
+
+		exclam.addActionListener(this);
+		hash.addActionListener(this);
+		percent.addActionListener(this);
+		and.addActionListener(this);
+		asterisk.addActionListener(this);
+		caret.addActionListener(this);
+		plus.addActionListener(this);
+		dash.addActionListener(this);
+		slash.addActionListener(this);
+		apost.addActionListener(this);
+		equal.addActionListener(this);
+		question.addActionListener(this);
+		underscore.addActionListener(this);
+		quote.addActionListener(this);
+		braceL.addActionListener(this);
+		braceR.addActionListener(this);
+		or.addActionListener(this);
+		tilde.addActionListener(this);
 		
 		backspace.addActionListener(this);
 		
@@ -109,7 +187,45 @@ public class TouchNumPad extends JPanel implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			// TODO Auto-generated method stub
-			if (ae.getSource() == zero) {
+			if (ae.getSource() == exclam) {
+				input += "!";
+			} else if (ae.getSource() == hash) {
+				input += "#";
+			} else if (ae.getSource() == dollar) {
+				input += "$";
+			} else if (ae.getSource() == percent) {
+				input += "%";
+			} else if (ae.getSource() == and) {
+				input += "&";
+			} else if (ae.getSource() == asterisk) {
+				input += "*";
+			} else if (ae.getSource() == caret) {
+				input += "^";
+			} else if (ae.getSource() == plus) {
+				input += "+";
+			} else if (ae.getSource() == dash) {
+				input += "-";
+			} else if (ae.getSource() == slash) {
+				input += "/";
+			} else if (ae.getSource() == apost) {
+				input += "'";
+			} else if (ae.getSource() == equal) {
+				input += "=";
+			} else if (ae.getSource() == question) {
+				input += "?";
+			} else if (ae.getSource() == underscore) {
+				input += "_";
+			} else if (ae.getSource() == quote) {
+				input += "`";
+			} else if (ae.getSource() == braceL) {
+				input += "{";
+			} else if (ae.getSource() == braceR) {
+				input += "}";
+			} else if (ae.getSource() == or) {
+				input += "|";
+			} else if (ae.getSource() == tilde) {
+				input += "~";
+			} else if (ae.getSource() == zero) {
 				input += "0";
 			} else if (ae.getSource() == one) {
 				input += "1";

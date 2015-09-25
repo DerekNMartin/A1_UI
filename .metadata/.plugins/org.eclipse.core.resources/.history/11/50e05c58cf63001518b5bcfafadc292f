@@ -82,15 +82,34 @@ public class TouchNumPad extends JPanel implements ActionListener {
 		this.add(nine, gridC);
 		
 		gridC.gridy = 3;
-		gridC.gridx = 0;
-		this.add(zero, gridC);
-		gridC.gridwidth = 2;
 		gridC.gridx = 1;
-		this.add(backspace, gridC);
+		this.add(zero, gridC);
 
 		
 		gridC.gridwidth = 15;
 		gridC.gridheight = 4;
+		
+		
+		
+
+		exclam.addActionListener(this);
+		hash.addActionListener(this);
+		percent.addActionListener(this);
+		and.addActionListener(this);
+		asterisk.addActionListener(this);
+		caret.addActionListener(this);
+		plus.addActionListener(this);
+		dash.addActionListener(this);
+		slash.addActionListener(this);
+		apost.addActionListener(this);
+		equal.addActionListener(this);
+		question.addActionListener(this);
+		underscore.addActionListener(this);
+		quote.addActionListener(this);
+		braceL.addActionListener(this);
+		braceR.addActionListener(this);
+		or.addActionListener(this);
+		tilde.addActionListener(this);
 		
 		backspace.addActionListener(this);
 		
@@ -109,7 +128,45 @@ public class TouchNumPad extends JPanel implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			// TODO Auto-generated method stub
-			if (ae.getSource() == zero) {
+			if (ae.getSource() == exclam) {
+				input += "!";
+			} else if (ae.getSource() == hash) {
+				input += "#";
+			} else if (ae.getSource() == dollar) {
+				input += "$";
+			} else if (ae.getSource() == percent) {
+				input += "%";
+			} else if (ae.getSource() == and) {
+				input += "&";
+			} else if (ae.getSource() == asterisk) {
+				input += "*";
+			} else if (ae.getSource() == caret) {
+				input += "^";
+			} else if (ae.getSource() == plus) {
+				input += "+";
+			} else if (ae.getSource() == dash) {
+				input += "-";
+			} else if (ae.getSource() == slash) {
+				input += "/";
+			} else if (ae.getSource() == apost) {
+				input += "'";
+			} else if (ae.getSource() == equal) {
+				input += "=";
+			} else if (ae.getSource() == question) {
+				input += "?";
+			} else if (ae.getSource() == underscore) {
+				input += "_";
+			} else if (ae.getSource() == quote) {
+				input += "`";
+			} else if (ae.getSource() == braceL) {
+				input += "{";
+			} else if (ae.getSource() == braceR) {
+				input += "}";
+			} else if (ae.getSource() == or) {
+				input += "|";
+			} else if (ae.getSource() == tilde) {
+				input += "~";
+			} else if (ae.getSource() == zero) {
 				input += "0";
 			} else if (ae.getSource() == one) {
 				input += "1";

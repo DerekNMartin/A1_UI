@@ -82,11 +82,8 @@ public class TouchNumPad extends JPanel implements ActionListener {
 		this.add(nine, gridC);
 		
 		gridC.gridy = 3;
-		gridC.gridx = 0;
-		this.add(zero, gridC);
-		gridC.gridwidth = 2;
 		gridC.gridx = 1;
-		this.add(backspace, gridC);
+		this.add(zero, gridC);
 
 		
 		gridC.gridwidth = 15;
