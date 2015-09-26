@@ -20,15 +20,12 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 	private JTextField studentNumber;
 	private JTextField pin;
 	private JTextField email;
-	private JTextField vehicleInsurance;
 	private JTextField expiry;
 
 	private JLabel studentNumberLabel = new JLabel("Student Number:");
 	private JLabel pinLabel = new JLabel("PIN:");
-	private JLabel emailLabel = new JLabel("* Email Address:");
-	private JLabel vehicleInsuranceLabel = new JLabel(
-			"Vehicle & Insurance Information:");
 	private JLabel expiryLabel = new JLabel("Expiry Date:");
+	private JLabel emailLabel = new JLabel("* Email Address:");
 
 	private TouchKeyboard keys;
 
@@ -36,13 +33,11 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		studentNumber = new JTextField(20);
 		pin = new JTextField(20);
 		email = new JTextField(20);
-		vehicleInsurance = new JTextField(20);
 		expiry = new JTextField(20);
 
 		studentNumber.addFocusListener(this);
 		pin.addFocusListener(this);
 		email.addFocusListener(this);
-		vehicleInsurance.addFocusListener(this);
 		expiry.addFocusListener(this);
 
 		this.setLayout(new GridBagLayout());
@@ -62,19 +57,14 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		this.add(pin, gc);
 		gc.gridx = 0;
 		gc.gridy = 2;
-		this.add(emailLabel, gc);
-		gc.gridx = 1;
-		this.add(email, gc);
-		gc.gridx = 0;
-		gc.gridy = 3;
-		this.add(vehicleInsuranceLabel, gc);
-		gc.gridx = 1;
-		this.add(vehicleInsurance, gc);
-		gc.gridx = 0;
-		gc.gridy = 4;
 		this.add(expiryLabel, gc);
 		gc.gridx = 1;
 		this.add(expiry, gc);
+		gc.gridx = 0;
+		gc.gridy = 4;
+		this.add(emailLabel, gc);
+		gc.gridx = 1;
+		this.add(email, gc);
 
 		this.keys = keys;
 		keys.setTextField(studentNumber);
@@ -93,9 +83,6 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		} else if (fe.getSource() == email) {
 			keys.setTextField(email);
 			keys.setInput(email.getText());
-		} else if (fe.getSource() == vehicleInsurance) {
-			keys.setTextField(vehicleInsurance);
-			keys.setInput(vehicleInsurance.getText());
 		} else if (fe.getSource() == expiry) {
 			keys.setTextField(expiry);
 			keys.setInput(expiry.getText());

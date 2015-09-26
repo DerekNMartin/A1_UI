@@ -1,7 +1,15 @@
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class ParkingKiosk {
 
@@ -25,14 +33,23 @@ public class ParkingKiosk {
 			this.setTitle("Parking Kiosk");
 			TouchKeyboard keys = new TouchKeyboard();
 			TextFieldPanel field = new TextFieldPanel(keys);
+			InsuranceInfoPanel insuranceInfo = new InsuranceInfoPanel(keys);
 
-			JPanel jpanel = new JPanel();
+			JPanel info = new JPanel(new BorderLayout());
 
-			this.setContentPane(jpanel);
-			jpanel.setLayout(new GridLayout(2, 0));
+			info.setLayout(new BoxLayout(info,
+                    BoxLayout.LINE_AXIS));
+			info.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
-			jpanel.add(field);
-			jpanel.add(keys);
+			
+			info.add(field);
+			info.add(new JSeparator(SwingConstants.VERTICAL));
+			info.add(insuranceInfo);
+			
+			Container contentPane = getContentPane();
+			contentPane.add(info, BorderLayout.CENTER);
+			contentPane.add(keys, BorderLayout.PAGE_END);
+			
 
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.pack();
