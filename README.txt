@@ -18,6 +18,8 @@ User Interfaces - Assignment 1 - Parking Kiosk
 	Characters ! # $ % & ' * + - / = ? ^ _ ` { | } ~
 	Character . (dot, period, full stop) provided that it is not the first or last character, and provided also that it does not appear two or more times consecutively.
 
+- Line break or separate page for Insurance details
+
 Resources:
 
 http://www.smashingmagazine.com/2013/08/guide-to-designing-touch-keyboards-with-cheat-sheet/

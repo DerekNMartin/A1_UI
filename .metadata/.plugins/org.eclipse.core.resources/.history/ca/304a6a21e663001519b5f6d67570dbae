@@ -1,0 +1,68 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class InsuranceInfoPanel extends JPanel implements ActionListener {
+	
+	private JComboBox companyList;
+	private JLabel insuranceLabel;
+	
+	public InsuranceInfoPanel(){
+		super(new BorderLayout());
+		
+		 String[] company = { "Co-operators Insurance Company of Canada", 
+				 					"State Farm Underwriters Incorporated", 
+				 					"Allstate International Insurance Company Ltd.", 
+				 					"Metropolitan Life Insurance Company", 
+				 					"Bang Em Up Insurance Company of Vaughan",
+				 					"Tightwads Incorporated",
+				 					"Gottcha Insurance Company, Inc."};
+		 
+	    companyList = new JComboBox(company);
+	     
+	 	insuranceLabel = new JLabel(
+				"Vehicle & Insurance Information: ");
+	     
+	     companyList.addActionListener(this);
+	     
+	     this.setLayout(new GridBagLayout());
+			GridBagConstraints gc = new GridBagConstraints();
+			gc.fill = GridBagConstraints.BOTH;
+			gc.insets = new Insets(10, 10, 10, 10);
+
+			gc.gridx = 0;
+			gc.gridy = 0;
+			this.add(insuranceLabel, gc);
+			gc.gridx = 1;
+			this.add(companyList, gc);
+	
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 JComboBox cb = (JComboBox)e.getSource();
+	     String company = (String)cb.getSelectedItem();
+	}
+	
+	public static void main(String[] args) {
+		JFrame frame = new JFrame("Combo Box Panel");
+		ComboBoxPanel panel = new ComboBoxPanel();
+		frame.setContentPane(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+
+		// put the frame in the middle of the display
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height
+				/ 2 - frame.getSize().height / 2);
+
+		frame.setVisible(true);
+	}
+
+}
