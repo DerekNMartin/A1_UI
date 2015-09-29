@@ -34,7 +34,7 @@ public class ParkingKiosk {
 			TouchKeyboard keys = new TouchKeyboard();
 			TextFieldPanel field = new TextFieldPanel(keys);
 			InsuranceInfoPanel insuranceInfo = new InsuranceInfoPanel(keys);
-
+			
 			JPanel info = new JPanel(new BorderLayout());
 
 			info.setLayout(new BoxLayout(info,
@@ -43,8 +43,10 @@ public class ParkingKiosk {
 
 			
 			info.add(field);
+			
 			info.add(new JSeparator(SwingConstants.VERTICAL));
 			info.add(insuranceInfo);
+			
 			
 			Container contentPane = getContentPane();
 			contentPane.add(info, BorderLayout.CENTER);

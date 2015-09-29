@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -6,6 +7,7 @@ import java.awt.Toolkit;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +23,11 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 	private JTextField pin;
 	private JTextField email;
 	private JTextField expiry;
+	
+	
+	
+	
+	
 
 	private JLabel studentNumberLabel = new JLabel("Student Number:");
 	private JLabel pinLabel = new JLabel("PIN:");
@@ -28,17 +35,45 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 	private JLabel emailLabel = new JLabel("* Email Address:");
 
 	private TouchKeyboard keys;
+	
+	String[] months = new String[] { "January", 
+			"February", 
+			"March", 
+			"April", 
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"};
+
+	JComboBox<String> monthList = new JComboBox<>(months);
+	
+	String[] years = new String[] {"2015",
+			"2016",
+			"2017",
+			"2018",
+			"2019",
+			"2020"};
+	JComboBox<String> yearList = new JComboBox<>(years);
+	
 
 	public TextFieldPanel(TouchKeyboard keys) {
 		studentNumber = new JTextField(20);
 		pin = new JTextField(20);
 		email = new JTextField(20);
 		expiry = new JTextField(20);
+		
+
 
 		studentNumber.addFocusListener(this);
 		pin.addFocusListener(this);
 		email.addFocusListener(this);
 		expiry.addFocusListener(this);
+		
+		
 
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -59,11 +94,17 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		gc.gridy = 2;
 		this.add(expiryLabel, gc);
 		gc.gridx = 1;
-		this.add(expiry, gc);
-		gc.gridx = 0;
+		this.add(monthList, gc);
+		gc.gridx = 1;
 		gc.gridy = 4;
+		gc.gridwidth = 3;
+		this.add(yearList, gc);
+		gc.gridx = 0;
+		gc.gridy = 5;
+		
 		this.add(emailLabel, gc);
 		gc.gridx = 1;
+		gc.gridy = 5;
 		this.add(email, gc);
 
 		this.keys = keys;
