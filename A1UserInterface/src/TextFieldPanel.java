@@ -93,11 +93,10 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		gc.gridx = 0;
 		gc.gridy = 2;
 		this.add(expiryLabel, gc);
+		gc.gridwidth = 2;
 		gc.gridx = 1;
 		this.add(monthList, gc);
-		gc.gridx = 1;
-		gc.gridy = 4;
-		gc.gridwidth = 3;
+		gc.gridx = 2;
 		this.add(yearList, gc);
 		gc.gridx = 0;
 		gc.gridy = 5;
