@@ -1,0 +1,38 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class DataBase {
+	
+	public DataBase(String studentNumber, String pin, String familyName, String givenName, String status){
+		try {
+
+			String output = studentNumber + ", " + pin + ", " + familyName + ", " + givenName + ", " + status + System.getProperty("line.separator");
+			File file = new File("students.txt");
+
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(output);
+			bw.close();
+
+			System.out.println("Done");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String args[]){
+		new DataBase("123456789","8525","Ott","James","ok");
+		new DataBase("789456123","1655","Papazian","Anna","arrears");
+		new DataBase("456123789","2564","Martin","Derek","arrears");
+		
+	}
+
+}

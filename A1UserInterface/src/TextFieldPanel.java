@@ -1,9 +1,10 @@
 import java.awt.Dimension;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -13,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class TextFieldPanel extends JPanel implements FocusListener {
+public class TextFieldPanel extends JPanel implements FocusListener, ActionListener {
 
 	/**
 	 * 
@@ -24,12 +25,6 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 	private JTextField email;
 	private JTextField expiry;
 	
-	
-	
-	
-	
-	
-
 	private JLabel studentNumberLabel = new JLabel("Student Number:");
 	private JLabel pinLabel = new JLabel("PIN:");
 	private JLabel expiryLabel = new JLabel("Expiry Date:");
@@ -74,7 +69,8 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		email.addFocusListener(this);
 		expiry.addFocusListener(this);
 		
-		
+		monthList.addActionListener(this);
+		yearList.addActionListener(this);
 
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
@@ -108,7 +104,6 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		this.add(email, gc);
 
 		this.keys = keys;
-		keys.setTextField(studentNumber);
 
 	}
 
@@ -116,21 +111,12 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 	public void focusGained(FocusEvent fe) {
 		// TODO Auto-generated method stub
 		if (fe.getSource() == studentNumber) {
-			keys.setToTouchNumKeyboard();
-			keys.setTextField(studentNumber);
-			keys.setInput(studentNumber.getText());
+			keys.setNumberKeyboard(studentNumber, studentNumber.getText());
 		} else if (fe.getSource() == pin) {
-			keys.setToTouchNumKeyboard();
-			keys.setTextField(pin);
-			keys.setInput(pin.getText());
+			keys.setNumberKeyboard(pin, pin.getText());
 		} else if (fe.getSource() == email) {
-			keys.setToKeyboard2();
-			keys.setTextField(email);
-			keys.setInput(email.getText());
-		} else if (fe.getSource() == expiry) {
-			keys.setTextField(expiry);
-			keys.setInput(expiry.getText());
-		}
+			keys.setEmailKeyboard(email, email.getText());
+		} 
 	}
 
 	@Override
@@ -138,10 +124,11 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 		// TODO Auto-generated method stub
 
 	}
-
-	/*public void setTouchKeyboard(TouchKeyboard keys) {
-		this.keys = keys;
-	}*/
+	
+	public String[] getFieldInfo(){
+		String[] output = {studentNumber.getText(), pin.getText(), (String) monthList.getSelectedItem(), (String) yearList.getSelectedItem(), email.getText()};
+		return output;
+	}
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("TextFieldPanel");
@@ -156,5 +143,16 @@ public class TextFieldPanel extends JPanel implements FocusListener {
 				/ 2 - frame.getSize().height / 2);
 
 		frame.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == monthList){
+			System.out.println("Month: " + monthList.getSelectedItem().toString() );
+		} else if(e.getSource() == yearList){
+			System.out.println("Year: " + yearList.getSelectedItem().toString() );
+		}
+
 	}
 }

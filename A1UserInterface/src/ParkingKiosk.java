@@ -1,9 +1,5 @@
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -34,8 +30,6 @@ public class ParkingKiosk {
 			
 			try{
 				UIManager.setLookAndFeel(
-				// for in-class demo...
-				// UIManager.getCrossPlatformLookAndFeelClassName());
 						UIManager.getSystemLookAndFeelClassName());
 			} 
 			catch (Exception e){
@@ -45,6 +39,7 @@ public class ParkingKiosk {
 			ChangeKeyboard keys = new ChangeKeyboard(this);
 			TextFieldPanel field = new TextFieldPanel(keys);
 			InsuranceInfoPanel insuranceInfo = new InsuranceInfoPanel(keys);
+			InputChecks inputChecks = new InputChecks(field, insuranceInfo);
 			
 			JPanel info = new JPanel(new BorderLayout());
 
@@ -57,11 +52,15 @@ public class ParkingKiosk {
 			info.add(new JSeparator(SwingConstants.VERTICAL));
 			info.add(insuranceInfo);
 			
+			JPanel input = new JPanel(new BorderLayout());
+			input.add(keys,BorderLayout.NORTH);
+			input.add(new JSeparator(SwingConstants.HORIZONTAL), BorderLayout.CENTER);
+			input.add(inputChecks,BorderLayout.SOUTH);
 			
 			Container contentPane = getContentPane();
 			contentPane.add(info, BorderLayout.NORTH);
 			contentPane.add(new JSeparator(SwingConstants.HORIZONTAL), BorderLayout.CENTER);
-			contentPane.add(keys, BorderLayout.SOUTH);
+			contentPane.add(input, BorderLayout.SOUTH);
 			
 
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
