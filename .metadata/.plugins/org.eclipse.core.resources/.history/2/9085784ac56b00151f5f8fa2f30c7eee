@@ -1,0 +1,77 @@
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.KeyboardFocusManager;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+
+public class ParkingKiosk {
+
+	public ParkingKiosk() {
+		new ParkingKioskFrame();
+	}
+
+	public static void main(String arg[]) {
+		new ParkingKiosk();
+
+	}
+
+	public class ParkingKioskFrame extends JFrame {
+
+		/**
+	 * 
+	 */
+		private static final long serialVersionUID = 1L;
+
+		public ParkingKioskFrame() {
+			this.setTitle("Parking Kiosk");
+			TouchKeyboard keys = new TouchKeyboard();
+			TouchNumPad numPad = new TouchNumPad();
+			TouchCharPad charPad = new TouchCharPad();
+			TextFieldPanel field = new TextFieldPanel(numPad, keys, charPad);
+			InsuranceInfoPanel insuranceInfo = new InsuranceInfoPanel(keys);
+			
+			JPanel info = new JPanel(new BorderLayout());
+
+			info.setLayout(new BoxLayout(info,
+                    BoxLayout.LINE_AXIS));
+			info.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+
+			
+			info.add(field);
+			
+			info.add(new JSeparator(SwingConstants.VERTICAL));
+			info.add(insuranceInfo);
+			
+			
+			Container contentPane = getContentPane();
+			contentPane.add(info, BorderLayout.CENTER);
+			contentPane.add(numPad, BorderLayout.PAGE_END);
+
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setResizable(false);
+			this.pack();
+			this.setVisible(true);
+			
+			System.out.println(KeyboardFocusManager.getCurrentKeyboardFocusManager().getGlobalFocusOwner(););
+			
+			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
+		}
+
+	}
+
+}

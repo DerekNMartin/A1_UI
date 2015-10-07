@@ -1,0 +1,62 @@
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+
+public class AddComponentOnJFrameAtRuntime extends JFrame implements ActionListener, FocusListener
+{
+JPanel panel;
+JTextField pin;
+
+public AddComponentOnJFrameAtRuntime()
+{
+ super("Change Keyboard based on Focus");
+ setLayout(new BorderLayout());
+ panel=new JPanel();
+ panel.setLayout(new FlowLayout());
+ add(panel,BorderLayout.CENTER);
+ 
+ JButton button=new JButton("CLICK HERE");
+ pin = new JTextField(20);
+ add(button,BorderLayout.SOUTH);
+ 
+ button.addActionListener(this);
+ 
+ setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ setSize(500,500);
+ setVisible(true);
+}
+
+public void actionPerformed(ActionEvent evt)
+{
+ panel.add(new JButton("Button"));
+ panel.revalidate();
+ validate();
+}
+
+public static void main(String[]args)
+{
+ AddComponentOnJFrameAtRuntime acojfar=new AddComponentOnJFrameAtRuntime();
+}
+
+@Override
+public void focusGained(FocusEvent e) {
+	// TODO Auto-generated method stub
+	 panel.add(new JButton("Button"));
+	 panel.revalidate();
+	 validate();
+}
+
+@Override
+public void focusLost(FocusEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+}

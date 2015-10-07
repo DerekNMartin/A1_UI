@@ -1,15 +1,16 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class ParkingKiosk {
 
@@ -30,31 +31,45 @@ public class ParkingKiosk {
 		private static final long serialVersionUID = 1L;
 
 		public ParkingKioskFrame() {
+			
+			try{
+				UIManager.setLookAndFeel(
+				// for in-class demo...
+				// UIManager.getCrossPlatformLookAndFeelClassName());
+						UIManager.getSystemLookAndFeelClassName());
+			} 
+			catch (Exception e){
+			}
+			
 			this.setTitle("Parking Kiosk");
-			TouchKeyboard keys = new TouchKeyboard();
+			ChangeKeyboard keys = new ChangeKeyboard(this);
 			TextFieldPanel field = new TextFieldPanel(keys);
 			InsuranceInfoPanel insuranceInfo = new InsuranceInfoPanel(keys);
 			
 			JPanel info = new JPanel(new BorderLayout());
 
-			info.setLayout(new BoxLayout(info,
-                    BoxLayout.LINE_AXIS));
-			info.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+			info.setLayout(new BoxLayout(info, BoxLayout.LINE_AXIS));
+			info.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+			
+			keys.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-			
 			info.add(field);
-			
 			info.add(new JSeparator(SwingConstants.VERTICAL));
 			info.add(insuranceInfo);
 			
 			
 			Container contentPane = getContentPane();
-			contentPane.add(info, BorderLayout.CENTER);
-			contentPane.add(keys, BorderLayout.PAGE_END);
+			contentPane.add(info, BorderLayout.NORTH);
+			contentPane.add(new JSeparator(SwingConstants.HORIZONTAL), BorderLayout.CENTER);
+			contentPane.add(keys, BorderLayout.SOUTH);
 			
 
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			this.setResizable(false);
+
 			this.pack();
+			this.setLocationRelativeTo(null);
 			this.setVisible(true);
 
 		}
