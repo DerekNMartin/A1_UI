@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 INDEX VERSION 1.127+C:\Users\Derek\Documents\GitHub\A1_UI\.metadata\.plugins\org.eclipse.jdt.core
 3441330007.index
 1336297964.index
@@ -14,3 +15,31 @@ INDEX VERSION 1.127+C:\Users\Derek\Documents\GitHub\A1_UI\.metadata\.plugins\org
 3106216632.index
 36036608.index
 3721631353.index
+=======
+INDEX VERSION 1.127+/Users/Anna/git/A1_UI/.metadata/.plugins/org.eclipse.jdt.core
+3266567714.index
+2276114108.index
+308786522.index
+1660167734.index
+3712507179.index
+3321539481.index
+1749520324.index
+4133420628.index
+1384487945.index
+886486710.index
+3302703152.index
+1833648217.index
+2545238116.index
+3630079742.index
+4122244616.index
+3966064240.index
+156905802.index
+1852345425.index
+3772130619.index
+4109733932.index
+1989473878.index
+1819685514.index
+353965938.index
+2132207318.index
+1271342938.index
+>>>>>>> Stashed changes
